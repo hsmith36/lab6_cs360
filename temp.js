@@ -14,7 +14,7 @@ http.createServer(function (req, res) {
       if(err) throw err;
       var cities = data.toString().split("\n");
 
-      var myRe = new RegExp("^" + urlObj.query["q"]);
+      var myRe = new RegExp("^" + urlObj.query["q"], "i");
       console.log(myRe);
       
       jsonresult = [];
