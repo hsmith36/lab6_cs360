@@ -8,27 +8,27 @@ http.createServer(function (req, res) {
   if(urlObj.pathname.indexOf("getcity") != -1) {
 
     //console.log(urlObj);
-    console.log("In Getcity");
+    //console.log("In Getcity");
     
     fs.readFile("html/cities.dat.txt", function(err, data) {
       if(err) throw err;
       var cities = data.toString().split("\n");
 
       var myRe = new RegExp("^" + urlObj.query["q"], "i");
-      console.log(myRe);
+      //console.log(myRe);
       
       jsonresult = [];
 
       for(var i = 0; i < cities.length; i++) {
         var result = cities[i].search(myRe);
 	if(result != -1) {
-          console.log("City\t" + cities[i]); 
+          //console.log("City\t" + cities[i]); 
 	  jsonresult.push({city:cities[i]});
 	}
       }
 
-      console.log(jsonresult);
-      console.log(JSON.stringify(jsonresult));
+      //console.log(jsonresult);
+      //console.log(JSON.stringify(jsonresult));
 
       res.writeHead(200);
       res.end(JSON.stringify(jsonresult));
